@@ -1,0 +1,13 @@
+- name: Install Apache2 without apt
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+
+    - name: Install apache2 
+      ansible.builtin.command: apt-get install apache2 -y
+      register: install_apache
+      changed_when: "'Apache2 is already installed' not in install_apache.stdout"
+
+    - name: fail
+      ansible.builtin.command: /bin/false
