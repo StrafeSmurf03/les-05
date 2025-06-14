@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Ansible Lint
         run: |
-          ansible-lint O"Opdracht 2/nginx-install.yml" || true
+          ansible-lint "Opdracht 2/nginx-install.yml" || true
 
       - name: Syntax Check
         run: |
