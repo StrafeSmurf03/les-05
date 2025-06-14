@@ -23,11 +23,12 @@ jobs:
       - uses: actions/checkout@v4
 
       # Runs linter checks on the codebase
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
+      - name: 'Yamllint'
+        uses: karancode/yamllint-github-action@master
         with:
-          eslint: true
-          prettier: true
-          stylelint: true
+          yamllint_file_or_dir: '<yaml_file_or_dir>'
+          yamllint_strict: false
+          yamllint_comment: true
+
 
 
