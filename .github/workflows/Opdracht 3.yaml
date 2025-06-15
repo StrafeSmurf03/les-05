@@ -1,0 +1,47 @@
+name: Terraform CI/CD Validate
+
+on:
+  push:
+    branches: [ main]
+  workflow_dispatch:
+
+jobs:
+  # Stage 1: Code Quality check terraform files
+  Terraform:
+    name: Check Terraform Files
+    runs-on: local-host
+    defaults:
+      run: 
+        working-directory: ./Opdracht-3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: '1.12.2'
+
+      - name: Install ovftool
+        run: |
+          wget https://github.com/rgl/ovftool-binaries/raw/main/archive/VMware-ovftool-4.6.3-24031167-lin.x86_64.zip
+          unzip VMware-ovftool-4.6.3-24031167-lin.x86_64.zip
+          mv ovftool vmware-ovftool
+          mv vmware-ovftool /usr/bin/
+          chmod +x /usr/bin/vmware-ovftool/ovftool*
+          ln -s /usr/bin/vmware-ovftool/ovftool /usr/bin/ovftool
+
+      - name: Terraform Init
+        run: |
+          terraform init
+
+      - name: Terraform Validate
+        run: |
+          terraform fmt -check
+
+      - name: Terraform Plan
+        run: |
+          terraform plan 
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve

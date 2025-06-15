@@ -9,7 +9,7 @@ jobs:
   # Stage 1: Code Quality 
   lint:
     name: "Lint & Code Quality"
-    runs-on: ubuntu-latest
+    runs-on: local-host
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
