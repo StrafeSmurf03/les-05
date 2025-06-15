@@ -4,9 +4,9 @@ on:
   push:
     branches: [ main]
     paths:
-      - opdracht-3/**/*.tf
-      - opdracht-3/**/*.tfvars
-      - opdracht-3/**/*.tftpl
+      - Opdracht-3/**/*.tf
+      - Opdracht-3/**/*.tfvars
+      - Opdracht-3/**/*.tftpl
   workflow_dispatch:
 
 jobs:
@@ -29,9 +29,9 @@ jobs:
           wget https://github.com/rgl/ovftool-binaries/raw/main/archive/VMware-ovftool-4.6.3-24031167-lin.x86_64.zip
           unzip VMware-ovftool-4.6.3-24031167-lin.x86_64.zip
           mv ovftool vmware-ovftool
-          mv vmware-ovftool /usr/bin/
-          chmod +x /usr/bin/vmware-ovftool/ovftool*
-          ln -s /usr/bin/vmware-ovftool/ovftool /usr/bin/ovftool
+          mv vmware-ovftool $HOME/bin/
+          chmod +x $HOME/bin/vmware-ovftool/ovftool*
+          ln -s $HOME/bin/vmware-ovftool/ovftool /usr/bin/ovftool
 
       - name: Terraform Init
         run: |
