@@ -9,7 +9,7 @@ jobs:
   # Stage 1: Code Quality 
   lint:
     name: "Lint & Code Quality"
-    runs-on: local-host
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
