@@ -3,6 +3,10 @@ name: Terraform CI/CD Validate
 on:
   push:
     branches: [ main]
+    paths:
+      - opdracht-3/**/*.tf
+      - opdracht-3/**/*.tfvars
+      - opdracht-3/**/*.tftpl
   workflow_dispatch:
 
 jobs:
