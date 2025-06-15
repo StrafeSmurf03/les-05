@@ -28,6 +28,7 @@ jobs:
       - name: Install ovftool
         run: |
           export PATH="/home/gebruiker/bin/ovftool:$PATH"
+          export PATH="/home/gebruiker/bin:$PATH"
 
       - name: Terraform Init
         run: |
