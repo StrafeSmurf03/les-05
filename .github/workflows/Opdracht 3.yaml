@@ -24,15 +24,6 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Install ovftool
-        run: |
-          wget https://github.com/rgl/ovftool-binaries/raw/main/archive/VMware-ovftool-4.6.3-24031167-lin.x86_64.zip
-          unzip VMware-ovftool-4.6.3-24031167-lin.x86_64.zip
-          mv ovftool vmware-ovftool
-          mv vmware-ovftool $HOME/bin/
-          chmod +x $HOME/bin/vmware-ovftool/ovftool*
-          ln -s $HOME/bin/vmware-ovftool/ovftool /usr/bin/ovftool
-
       - name: Terraform Init
         run: |
           terraform init
